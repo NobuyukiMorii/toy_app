@@ -1,17 +1,20 @@
 source 'https://rubygems.org'
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem 'rails',        '5.1.6'
-gem 'puma',         '3.9.1'
-gem 'sass-rails',   '5.0.6'
-gem 'uglifier',     '3.2.0'
+ruby '2.5.0'
+
+gem 'rails', '~> 5.2.2'
+gem 'puma', '3.9.1'
+gem 'sass-rails', '5.0.6'
+gem 'uglifier', '3.2.0'
 gem 'coffee-rails', '4.2.2'
+gem 'turbolinks', '5.0.1'
+gem 'jbuilder', '2.6.4'
 gem 'jquery-rails', '4.3.1'
-gem 'turbolinks',   '5.0.1'
-gem 'jbuilder',     '2.7.0'
 
 group :development, :test do
-  gem 'sqlite3', '1.3.13'
-  gem 'byebug',  '9.0.6', platform: :mri
+  gem 'sqlite3',      '1.3.13'
+  gem 'byebug', '9.0.6', platform: :mri
 end
 
 group :development do
@@ -25,5 +28,13 @@ group :production do
   gem 'pg', '0.20.0'
 end
 
-# Windows環境ではtzinfo-dataというgemを含める必要があります
+group :test do
+  # Adds support for Capybara system testing and selenium driver
+  gem 'capybara', '>= 2.15'
+  gem 'selenium-webdriver'
+  # Easy installation and use of chromedriver to run system tests with Chrome
+  gem 'chromedriver-helper'
+end
+
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
